@@ -37,6 +37,18 @@
   <div class="navbar-brand">
     <a class="nav-link" href="#" id="nav-all">Hack or Snooze</a>
   </div>
+
+  <div class="main-nav-links hidden" style="display: block;">
+    |
+    <a class="nav-link" href="#" id="nav-submit">submit</a>
+    |
+    <a class="nav-link" href="#" id="nav-favorites">favorites</a>
+    |
+    <a class="nav-link" href="#" id="nav-my-stories">my&nbsp;stories</a>
+  </div>
+
+
+
   <div class="nav-right">
     <a class="nav-link" href="#" id="nav-login">login/signup</a>
     <a class="nav-link" href="#" id="nav-user-profile"></a>
@@ -44,16 +56,7 @@
   </div>
 </nav>
 
-<!-- area for stories (all stories, user stories, favorites) -->
-<section class="stories-container container">
 
-  <!-- loading message (removed by JS after stories loaded) -->
-  <div id="stories-loading-msg">Loading&hellip;</div>
-
-  <!-- List of all stories -->
-  <ol id="all-stories-list" class="stories-list"></ol>
-
-</section>
 
 <!-- Login and signup forms -->
 <section class="account-forms-container container">
@@ -95,6 +98,71 @@
     <button type="submit">create account</button>
   </form>
 </section>
+
+<!-- Story submission form -->
+<section class="story-forms-container container">
+  <form action="#" id="story-form" class="story-form hidden">
+    <div class="story-input">
+      <label for="story-title">title</label>
+      <input id="story-title" />
+    </div>
+
+    <div class="story-input">
+      <label for="story-author">author</label>
+      <input id="story-author" />
+    </div>
+
+    <div class="story-input">
+      <label for="story-url">url</label>
+      <input id="story-url" />
+    </div>
+
+    <button type="submit">submit</button>
+
+
+
+  </form>
+
+</section>
+
+
+<!-- area for stories (all stories, user stories, favorites) -->
+<section class="stories-container container">
+
+  <!-- loading message (removed by JS after stories loaded) -->
+  <div id="stories-loading-msg">Loading&hellip;</div>
+
+  <!-- List of all stories -->
+  <ol id="all-stories-list" class="stories-list"></ol>
+
+</section>
+
+
+<!-- area for favorite stories (favorites) -->
+<section class="stories-container container">
+
+  <!-- loading message (removed by JS after stories loaded) -->
+  <div id="favorite-stories-loading-msg">Loading&hellip;</div>
+
+  <!-- List of all stories -->
+  <ol id="favorite-stories-list" class="stories-list"></ol>
+
+</section>
+
+
+
+
+<!-- area for my stories (favorites) -->
+<section class="stories-container container">
+
+  <!-- loading message (removed by JS after stories loaded) -->
+  <div id="my-stories-loading-msg">Loading&hellip;</div>
+
+  <!-- List of all stories -->
+  <ol id="my-stories-list" class="stories-list"></ol>
+
+</section>
+
 
 <!-- Library JS & our JS -->
 <script src="https://unpkg.com/jquery"></script>

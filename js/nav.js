@@ -25,6 +25,54 @@ function navLoginClick(evt) {
 
 $navLogin.on("click", navLoginClick);
 
+/** Show sumbit form for story submission */
+
+function navSubmitClick(evt) {
+  console.debug("navSubmitClick", evt);
+  hidePageComponents();
+  $allStoriesList.show();
+  $submitForm.show();
+  
+}
+
+$navSubmit.on("click", navSubmitClick);
+
+
+/** Show favorites list */
+
+function navFavoritesClick(evt) {
+  console.debug("navFavoritesClick", evt);
+  hidePageComponents();
+  
+  $favoriteStoriesList.show();
+  
+  
+}
+
+
+$navFavorites.on("click", navFavoritesClick);
+
+
+
+
+/** Show favorites list */
+
+function navMyStoriesClick(evt) {
+  console.debug("navFavoritesClick", evt);
+  hidePageComponents();
+  
+  $myStoriesList.show();
+  
+  
+}
+
+
+$navMyStories.on("click", navMyStoriesClick);
+
+
+
+
+
 /** When a user first logins in, update the navbar to reflect that. */
 
 function updateNavOnLogin() {

@@ -25,7 +25,9 @@ class Story {
 
   getHostName() {
     // UNIMPLEMENTED: complete this function!
-    return "hostname.com";
+
+    const newURL = new URL(this.url);
+    return newURL.hostname;
   }
 }
 
@@ -77,35 +79,50 @@ class StoryList {
     // UNIMPLEMENTED: complete this function!
 
 
-    let story = newStory;
+    let curStory = newStory;
     let token = user.loginToken;
 
-    console.log(newStory, token);
+    
 
     
     
-    const response = await axios.post('https://hack-or-snooze-v3.herokuapp.com/stories', {params: {token,story}});
+    const response = await axios({
+      method:"POST", 
+      url:`${BASE_URL}/stories`, 
+      data: {token,story: curStory}});
+    
 
+
+    const {storyId, title, author, url, username, createdAt} = response.data.story;
+
+    
+    return new Story(storyId, title, author, url, username, createdAt);
+
+  }
+
+
+
+  async removeStory(user, storyID) {
+    // UNIMPLEMENTED: complete this function!
+
+
+    let curStory = storyID;
+    let token = user.loginToken;
+
+    
+
+    
+    
+    const response = await axios({
+      method:"DELETE", 
+      url:`${BASE_URL}/stories/${curStory}`, 
+      params: {token}
+    });
+    
+
+
+       
     return response;
-
-
-    // var request = new XMLHttpRequest();
-
-    // request.open('POST', 'https://hack-or-snooze-v3.herokuapp.com/stories');
-
-    // request.onreadystatechange = function () {
-    //   if (this.readyState === 4) {
-    //     console.log('Status:', this.status);
-    //     console.log('Headers:', this.getAllResponseHeaders());
-    //     console.log('Body:', this.responseText);
-    //   }
-    // };
-
-    // var body = `"{ 'token': ${token},   'story': ${story} }"`;
-
-    // request.send(body);
-    
-
 
   }
 }
@@ -225,4 +242,41 @@ class User {
       return null;
     }
   }
+
+  async addFavorite(storyId,userName, token){
+   
+
+
+      const response = await axios({
+        
+        method:"POST",
+        url: `${BASE_URL}/users/${userName}/favorites/${storyId}`,
+        params: {token}
+      });
+
+
+
+      
+      return response.data.user.favorites;
+
+  }
+
+  async removeFavorite(storyId,userName, token){
+   
+
+
+    const response = await axios({
+      
+      method:"DELETE",
+      url: `${BASE_URL}/users/${userName}/favorites/${storyId}`,
+      params: {token}
+    });
+
+
+
+    
+    return response.data.user.favorites;
+
+}
+
 }
